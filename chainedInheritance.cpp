@@ -47,7 +47,7 @@ cout << format("Exam Marks  : {}/70\n", examMarks);
 
 int main(){
 
-FinalResult result1{"Joseph", 2026, "C++ Programming", 26.0, 58.0};
+FinalResult result1{"Johnson", 25/U/08587/PS, "C++ Programming", 26.0, 58.0};
 
 result1.showStudent();
 result1.showCoursework();
