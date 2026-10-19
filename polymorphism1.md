@@ -3,25 +3,6 @@
 **Subject Matter Overview**
 Polymorphism ("many forms") allows a single function call through a base-class pointer or reference to execute different behaviors depending on the actual derived object at runtime. In [polymorphism1.cpp](./polymorphism1.cpp), runtime polymorphism is modeled using university grading rules where an `Undergraduate` student passes at `50%`, whereas a `Postgraduate` student requires `60%` to pass.
 
-**Hierarchy Diagram**
-```text
-               +-----------------------------------+
-               |    AcademicResult (Base Class)    |
-               |-----------------------------------|
-               | + virtual evaluate(score) : void  |
-               +-----------------------------------+
-                        ^                 ^
-                        |                 |
-         +--------------+                 +--------------+
-         |                                               |
-+--------+------------------------+     +----------------+----------------+
-|    Undergraduate (Derived 1)    |     |     Postgraduate (Derived 2)    |
-|---------------------------------|     |---------------------------------|
-| + evaluate(score) override      |     | + evaluate(score) override      |
-|   Pass if score >= 50.0%        |     |   Pass if score >= 60.0%        |
-+---------------------------------+     +---------------------------------+
-```
-
 **OOP Concepts Used**
 • **Virtual Functions (`virtual`):** Declaring `virtual void evaluate(double score) const` in `AcademicResult` enables **dynamic dispatch**, ensuring the program selects the appropriate grading rule at runtime.
 • **Function Overriding (`override`):** Both `Undergraduate` and `Postgraduate` override `evaluate(double score) const` with their respective pass thresholds (`50.0%` vs. `60.0%`).
@@ -35,15 +16,6 @@ Polymorphism ("many forms") allows a single function call through a base-class p
    a. Instantiate `Undergraduate undergradStudent{}` and `Postgraduate postgradStudent{}`.
    b. Use base-class pointer `resultPtr` to call `evaluate(72.0)` on both objects.
    c. Bind base-class references `ref1` and `ref2` to both objects and call `evaluate(55.0)` to show different outcomes for the same `55%` score.
-
-**Output**
-```text
-Undergraduate (72%): Pass (Meets 50% requirement).
-Postgraduate (72%): Pass (Meets 60% requirement).
-
-Undergraduate (55%): Pass (Meets 50% requirement).
-Postgraduate (55%): Fail (Below 60% pass mark).
-```
 
 **Possible Error Points**
 • **Module & Format Support:** Uses C++23 (`import std;` and `format()`), requiring a C++23-capable compiler with module support.
